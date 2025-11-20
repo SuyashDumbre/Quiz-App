@@ -3,9 +3,9 @@ package quizpro;
 import java.sql.*;
 
 public class DBUtil {
-    static final String URL = "jdbc:mysql://localhost:3306/quizapp";
-    static final String USER = "root";
-    static final String PASSWORD = "root"; 
+     static final String URL = "jdbc:mysql://localhost:3306/yourdbname";
+    static final String USER = "yourusername";
+    static final String PASSWORD = "yourpassword";
 
     static {
         try {
@@ -57,3 +57,4 @@ public static Connection getConnection() throws SQLException {
         }
     }
 }
+
