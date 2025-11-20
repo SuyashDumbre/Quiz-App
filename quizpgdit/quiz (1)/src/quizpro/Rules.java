@@ -10,10 +10,10 @@ public class Rules extends JFrame implements ActionListener {
     private final JButton start;
     private final JButton back;
     private final String name;
-    private final String level; // added level field
-    private final selectlevel prev; // reference to previous SelectLevel window (may be null)
+    private final String level; 
+    private final selectlevel prev; 
 
-    // Primary constructor accepts the previous selectlevel instance
+   
     public Rules(selectlevel prev, String name, String level) {
         this.prev = prev;
         this.name = name;
@@ -93,7 +93,7 @@ public class Rules extends JFrame implements ActionListener {
         back.addActionListener(this);
         add(back);
 
-        // Background Image (Optional) — guard against missing resource
+        
         try {
             ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/back.png"));
             if (i1.getImageLoadStatus() == MediaTracker.ERRORED) {
@@ -115,23 +115,23 @@ public class Rules extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    // Convenience constructor for backward compatibility
+    
     public Rules(String name, String level) {
         this(null, name, level);
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == start) {
-            // close rules and start quiz
+            
             this.dispose();
             new Quiz(name, level);
         } else if (e.getSource() == back) {
-            // Properly return to previous SelectLevel instance if available
+            
             this.dispose();
             if (prev != null) {
                 prev.setVisible(true);
             } else {
-                // Fallback to Login if no previous screen was provided
+                
                 new Login();
             }
         }
@@ -141,3 +141,4 @@ public class Rules extends JFrame implements ActionListener {
         new Rules("User", "Easy");
     }
 }
+
