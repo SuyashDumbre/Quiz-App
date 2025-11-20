@@ -79,10 +79,10 @@ public class selectlevel extends JFrame implements ActionListener {
             JButton selected = (JButton) src;
             String level = selected.getText(); // Easy, Medium, or Hard
 
-            highlightSelected(selected); // Optional visual effect
+            highlightSelected(selected);
 
             setVisible(false);
-            new Rules(this,username, level);  // ✅ FIXED: now goes to Rules first
+            new Rules(this,username, level);  
         }
     }
 
@@ -103,3 +103,4 @@ public class selectlevel extends JFrame implements ActionListener {
         }
     }
 }
+
