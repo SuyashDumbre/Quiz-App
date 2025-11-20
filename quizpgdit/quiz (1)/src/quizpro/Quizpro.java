@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.Timer;
-import java.util.Collections; // ✅ Needed for shuffle
-import java.util.Arrays;      // ✅ Needed for Arrays.asList
-import java.util.List;        // ✅ Needed for List<JRadioButton>
+import java.util.Collections; 
+import java.util.Arrays;      
+import java.util.List;        
 
 public class Quizpro {
     public static void main(String[] args) {
@@ -398,3 +398,4 @@ class Quiz extends JFrame implements ActionListener {
         countdownTimer.start();
     }
 }
+
