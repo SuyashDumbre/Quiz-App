@@ -1,188 +1,212 @@
-Quiz Application 
+# 🧠 Quiz Application (QuizApp)
 
-This Quiz Application is a Java Swing desktop project created for learning purposes.
-It focuses on understanding Java GUI design, event handling, MySQL database integration, and building a complete working application with login, registration, quiz logic, timer, hints, score calculation, history, and review page.
+A fully functional **MCQ-based desktop quiz system** built using **Java Swing** and **Core Java**, designed to provide a real exam-like experience.  
+The application includes **login**, **difficulty levels**, **15-second timer**, **progress bar**, **hint feature**, **result screen**,  
+**answer review**, and **quiz history tracking using MySQL**.
 
-This project is suitable for students who want to learn Java and JDBC through a real application.
+---
 
-About the Project
+## 📌 1. Project Description
 
-The application provides a complete quiz-taking experience.
-A user can register, login, choose difficulty level, attempt questions, use hints, see the score, review the answers, and view their previous quiz attempts stored in a database.
+**QuizApp** allows users to log in, select a difficulty level, answer timed multiple-choice questions, and view results instantly.  
+All quiz attempts are stored in a **MySQL database**, enabling users to track their historical performance.
 
-The purpose of this project is to help students understand:
+This project demonstrates:
 
-Java Swing UI components
+- Building UI using **Java Swing**
+- Implementing **timed questions**
+- Using **JProgressBar** for tracking progress
+- JDBC connectivity with **MySQL**
+- Managing multi-screen workflows
+- Applying clean object-oriented programming principles
 
-Frame navigation and event listeners
+---
 
-Timer handling using javax.swing.Timer
+## 🚀 2. Features
 
-Using arrays to store questions and answers
+### 🔐 User Login
+- Username + password authentication  
+- Validates credentials using the `users` table  
+- Only authenticated users can proceed to the quiz  
 
-Storing and retrieving data with JDBC (MySQL)
+---
 
-Writing a clean, structured Java application
+### 🎚 Difficulty Selection
+- Choose between:
+  - **Easy**
+  - **Medium**
+  - **Hard**
+- Determines the question set loaded from the `questions` table  
 
-Main Features (Explained)
-1. Registration and Login
+---
 
-Users can create an account by entering a username and password.
-The username is checked for duplicates in the database.
-After successful registration, the user can log in.
-Both actions are done through MySQL using JDBC.
+### ⏱ 15-Second Countdown Timer
+- Every question has **exactly 15 seconds**
+- Timer resets automatically on each new question  
+- Auto-navigates to the next question when time expires  
+- Built using `javax.swing.Timer`
 
-2. Difficulty Level Selection
+---
 
-After login, the user can choose between Easy, Medium, and Hard levels.
-Each level loads a different set of 10 questions and correct answers.
-The number of hints also depends on the selected level.
+### 📊 Progress Bar
+- Visual indicator of quiz completion  
+- Progress increases with each question  
+- Enhances user experience  
 
-3. Timed Questions
+---
 
-Each question has a 15-second countdown timer.
-If the time finishes, the app automatically moves to the next question.
-This helps students learn how timers work in Java Swing.
+### 🧩 Main Quiz Screen
+Includes:
 
-4. Hint / Lifeline System
+- Question text  
+- Four MCQ options  
+- 15-second timer  
+- Progress bar  
+- Buttons:
+  - **Next**
+  - **Hint**
+  - **Submit**
+  - **Quit**
 
-Users get hints depending on the chosen difficulty:
+User answers are stored for evaluation at the end.
 
-Easy: 6 hints
+---
 
-Medium: 4 hints
+### 💡 Hint Feature
+- Usable once per question  
+- Reveals:
+  - **One correct option**
+  - **One incorrect option**
+- Helps users make an informed choice  
 
-Hard: 3 hints
+---
 
-When a hint is used, the app will disable all incorrect options except one, and keep the correct answer enabled. This helps in understanding logic and randomization in Java.
+### 🏁 Result Screen
+Displays:
 
-5. Score Calculation
+- Final score  
+- Correct vs incorrect answers  
+- Accuracy  
+- Performance summary  
 
-Each correct answer gives 10 marks.
-Skipped or wrong answers give 0.
-A final score screen shows the total marks.
+---
 
-6. Review Page
+### 🔍 Review Answers Screen
+Shows:
 
-After the quiz ends, users can review all the questions.
-For each question, it displays:
+- All questions  
+- Correct answers  
+- User’s selected answers  
+- Clean, color-coded layout for analysis  
 
-Question
+---
 
-User's answer (or "Skipped")
+### 📘 History Page
+Allows users to view all past quiz attempts fetched from MySQL, including:
 
-Correct answer
+- Score  
+- Date & time  
+- Username  
 
-This helps students validate their performance.
+---
 
-7. History Page
+## ⚙️ 3. Application Flow
 
-The application stores the user's score in a MySQL table.
-Users can view all their past quiz attempts along with the scores.
-This demonstrates how to fetch data from MySQL and display it in a JTable.
+1. **Login** → Validate user  
+2. **Select Difficulty Level**  
+3. **View Rules**  
+4. **Start Quiz** (Timer + Progress Bar + Hint + Navigation)  
+5. **Submit Quiz** → Score generated  
+6. **View Result**  
+7. **Review Answers**  
+8. **View History (MySQL)**  
 
-MySQL Database Setup
+---
 
-Run these commands in MySQL Workbench or Command Prompt:
+## 🧩 4. Technologies Used
 
-CREATE DATABASE quizapp;
+- **Java Swing** (JFrame, JPanel, JLabel, JButton, JProgressBar, JTextArea, JRadioButton)  
+- **Core Java OOP**  
+- **javax.swing.Timer**  
+- **Event Handling (ActionListener)**  
+- **JDBC**  
+- **MySQL Database**  
+- **NetBeans IDE**
+
+---
+
+# 🧠 Key Learning Outcomes (Short & Professional)
+
+- Building desktop UI using **Java Swing** (frames, buttons, labels, progress bar).  
+- Implementing a **15-second countdown timer** with `javax.swing.Timer`.  
+- Using **event-driven programming** and handling button actions.  
+- Applying **Core Java OOP** concepts to structure a multi-screen application.  
+- Implementing **Hint logic** (show 1 correct + 1 wrong option).  
+- Updating and syncing a **progress bar** during quiz flow.  
+- Connecting Java to **MySQL using JDBC** for login, questions, and history.  
+- Designing **database tables** (`users`, `questions`, `quiz_results`).  
+- Calculating scores and building a **result + review answers system**.  
+- Running a full workflow in **NetBeans** from setup → connect DB → run quiz.  
+
+---
+
+# 📚 Quiz Application Project Setup Guide
+
+This section provides the **database schema** and **setup steps** needed to run the Quiz Application.
+
+---
+
+# 💾 Database Schema (MySQL)
+
+The Quiz Application requires **three** tables:
+
+- **users** – stores login credentials  
+- **quiz_results** – stores user quiz history  
+---
+
+## 🗄️ Database Tables (Users + Quiz Results)
+
+```sql
+-- Create the database
+CREATE DATABASE IF NOT EXISTS quizapp;
 USE quizapp;
 
-CREATE TABLE users (
+-- Users Table
+CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(100) UNIQUE,
-    password VARCHAR(100)
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE quiz_results (
+-- Quiz Results Table (History)
+CREATE TABLE IF NOT EXISTS quiz_results (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(100),
-    score INT,
-    taken_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    username VARCHAR(50) NOT NULL,
+    score INT NOT NULL,
+    date_taken TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+```
+# 🏁 How to Run the Project (NetBeans)
+
+## 1️⃣ Open in NetBeans
+- Import the project folder  
+- Ensure all `.java` files compile correctly  
+- Add **MySQL Connector/J**:
+  - Right-click project → **Properties**
+  - Go to **Libraries**
+  - Click **Add JAR/Folder**
+  - Select the MySQL JDBC `.jar` file
+
+------------------------------------------------------------
+
+## 2️⃣ Update Database Connection
+
+Modify the database connection details in your Java code:
+```java
+String url = "jdbc:mysql://localhost:3306/quizapp";
+String user = "root";
+String password = "your_password";
+```
 
 
-This creates two tables:
 
-users → stores usernames and passwords
-
-quiz_results → stores the quiz scores along with timestamp
-
-DBUtil Configuration
-
-The project uses a DBUtil class to connect Java with MySQL.
-For local use, update the connection details:
-
-static final String URL = "jdbc:mysql://localhost:3306/quizapp";
-static final String USER = "root";
-static final String PASSWORD = "your_mysql_password";
-
-
-For GitHub, always remove your real credentials and keep placeholders like:
-
-static final String USER = "yourusername";
-static final String PASSWORD = "yourpassword";
-
-How to Run the Project in NetBeans
-
-Install Java JDK (8 or above).
-
-Install Apache NetBeans IDE.
-
-Install MySQL Server and MySQL Workbench.
-
-Import the project folder into NetBeans.
-
-Add the MySQL JDBC Connector JAR in project libraries.
-
-Update DBUtil.java with your real MySQL username and password.
-
-Run the project from Quizpro.java (contains the main method).
-
-Project File Structure
-src/quizpro/
-    DBUtil.java
-    Login1.java
-    Register.java
-    LevelSelection.java
-    Quiz.java
-    score.java
-    ReviewPage.java
-    MyHistory.java
-    selectlevel.java
-    Quizpro.java
-
-
-Each class represents a specific screen or feature:
-
-Login and Register ➝ authentication
-
-LevelSelection ➝ choose difficulty
-
-Quiz ➝ main quiz logic, timer, hints
-
-score ➝ final score screen
-
-ReviewPage ➝ review answers
-
-MyHistory ➝ shows previous scores
-
-DBUtil ➝ MySQL connection
-
-Quizpro.java ➝ main entry point
-
-Purpose of This Project
-
-This project was created as a part of learning:
-
-Java Swing UI
-
-Object-oriented programming
-
-Events and timers
-
-Database connectivity using JDBC
-
-Organizing a multi-file Java application
-
-It is a student-level project but demonstrates practical concepts used in real applications.
